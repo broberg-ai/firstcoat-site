@@ -37,6 +37,8 @@ h1 svg{width:100%;height:auto;display:block}
 .sound-on .neon .tilt,.sound-on .neon .blink{animation:none}
 /* «Coming soon» tænder og slukker som et neonskilt (ejeren 12/10, F002.21) */
 .soon{animation:soon-glow 6s infinite}
+/* «Coming soon» bliver hvor den stod — kun bylinen rykker op (ejeren 12/10) */
+.line+.soon{margin-top:calc(clamp(28px,4.6vw,60px) * 1.25)}
 @keyframes soon-glow{0%,40%,56%,86%,100%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}44%,47%,52%{opacity:.3;text-shadow:none}45%,50%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}88%,91%{opacity:.25;text-shadow:none}}
 @media (prefers-reduced-motion:reduce){.neon .tilt,.neon .blink,.soon{animation:none}}
 </style>
