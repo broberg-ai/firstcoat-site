@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FIRST COAT — coming soon</title>
 <meta name="description" content="Contemporary Art &amp; Objects">
-<meta name="theme-color" content="#140A1F">
+<meta name="theme-color" content="#080607">
 <link rel="canonical" href="https://firstcoat.gallery/">
 <meta property="og:title" content="FIRST COAT — coming soon">
 <meta property="og:description" content="Contemporary Art &amp; Objects">
@@ -15,11 +15,15 @@
 @font-face{font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/inter-latin.woff2) format("woff2")}
 :root{--night:#140A1F;--white:#F6F2EC;--pink:#FF2D95;--purple:#9B3DFF;--classic:#FF3B1F}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:var(--night);color:var(--white);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+/* Siden står på den samme mur som bag rørene (ejeren 20/10) */
+html,body{margin:0;min-height:100%;background:#080607 url(wall-tile.webp) repeat;color:var(--white);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
 main{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(14px,3vh,32px);padding:clamp(56px,8vh,96px) 16px}
 h1{margin:0;width:min(100%,1100px,calc((100dvh - 300px) * 2.4))}
 /* Væggen bag logoet er ejerens oplyste mur; holderne ligger oven på rørene i samme viewBox */
-.wall{position:relative;border-radius:14px;overflow:hidden;padding-bottom:clamp(14px,3vw,34px);background:#050303 url(wall.webp) top left/100% auto no-repeat}
+.wall{position:relative;padding-bottom:clamp(14px,3vw,34px)}
+/* Det oplyste vægstykke toner ud i muren omkring det, så der ingen kant er */
+.wall::before{content:"";position:absolute;inset:0;z-index:-1;background:url(wall.webp) top left/100% auto no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(transparent,#000 6%,#000 70%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(transparent,#000 6%,#000 70%,transparent);mask-composite:intersect}
+h1{position:relative;z-index:0}
 .wall > svg{width:100%;height:auto;display:block}
 .wall > svg.clips{position:absolute;top:0;left:0;pointer-events:none}
 .by{width:72%;margin:4px 0 0 5%}
