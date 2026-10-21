@@ -73,7 +73,8 @@ h1{position:relative;z-index:0}
 .signup-done{padding:18px 20px;border-radius:14px;border:1px solid color-mix(in srgb,var(--classic) 55%,transparent);background:color-mix(in srgb,#000 50%,transparent)}
 .signup-done p{margin:0;font-size:15px;line-height:1.55}
 .signup-done strong{display:block;margin-bottom:4px;font-size:17px;color:var(--white)}
-@media (max-width:440px){.signup-row{flex-direction:column}.signup-input{flex:none}.signup-btn{justify-content:center}}
+/* På mobil står felt og knap under hinanden; lidt mindre luft og tekst, så en lang adresse også kan ses dér */
+@media (max-width:440px){.signup-row{flex-direction:column}.signup-input{flex:none;padding:0 12px;font-size:15px;letter-spacing:0}.signup-btn{justify-content:center}}
 </style>
 </head>
 <body>
