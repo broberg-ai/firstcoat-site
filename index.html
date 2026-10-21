@@ -54,13 +54,14 @@ h1{position:relative;z-index:0}
 .signup-lead{margin:0 0 14px;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--white) 78%,transparent)}
 .signup-row{display:flex;gap:8px}
 /* Adressen lyser som neon på mørk bund (ejeren 21/10): lys kerne, rosa glød */
-.signup-input{flex:1;min-width:0;height:48px;padding:0 16px;border-radius:12px;border:1px solid color-mix(in srgb,var(--white) 22%,transparent);background:#000;color:#FFE3F1;caret-color:#FF5AA5;font:inherit;font-size:16px;font-weight:500;letter-spacing:.02em;text-shadow:0 0 4px #FF5AA5,0 0 10px #FF2D95,0 0 20px #E3103F;transition:border-color .15s,box-shadow .15s}
+/* Adressen fylder feltet (ejeren 21/10: «en del større så den fylder feltet ud») */
+.signup-input{flex:1;min-width:0;height:56px;padding:0 18px;border-radius:12px;border:1px solid color-mix(in srgb,var(--white) 22%,transparent);background:#000;color:#FFE3F1;caret-color:#FF5AA5;font:inherit;font-size:22px;font-weight:500;letter-spacing:.01em;text-shadow:0 0 4px #FF5AA5,0 0 10px #FF2D95,0 0 20px #E3103F;transition:border-color .15s,box-shadow .15s}
 /* Browserens autoudfyldning maler ellers feltet lyseblåt og teksten sort */
 .signup-input:-webkit-autofill,.signup-input:-webkit-autofill:hover,.signup-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #000 inset;-webkit-text-fill-color:#FFE3F1;caret-color:#FF5AA5;transition:background-color 9999s}
 .signup-input::placeholder{color:color-mix(in srgb,var(--white) 45%,transparent);text-shadow:none}
 .signup-input:focus{outline:none;border-color:var(--classic);box-shadow:0 0 0 3px color-mix(in srgb,var(--classic) 30%,transparent)}
 .signup-input[aria-invalid="true"]{border-color:var(--classic)}
-.signup-btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid var(--classic);background:color-mix(in srgb,var(--classic) 16%,transparent);color:var(--white);font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-shadow:0 0 10px color-mix(in srgb,var(--classic) 60%,transparent);transition:background .15s,transform .1s,box-shadow .15s}
+.signup-btn{height:56px;padding:0 20px;border-radius:12px;border:1px solid var(--classic);background:color-mix(in srgb,var(--classic) 16%,transparent);color:var(--white);font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-shadow:0 0 10px color-mix(in srgb,var(--classic) 60%,transparent);transition:background .15s,transform .1s,box-shadow .15s}
 .signup-btn:hover{background:color-mix(in srgb,var(--classic) 30%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--classic) 45%,transparent)}
 .signup-btn:active{transform:scale(.97)}
 .signup-btn:focus-visible{outline:2px solid var(--classic);outline-offset:2px}
@@ -74,7 +75,7 @@ h1{position:relative;z-index:0}
 .signup-done p{margin:0;font-size:15px;line-height:1.55}
 .signup-done strong{display:block;margin-bottom:4px;font-size:17px;color:var(--white)}
 /* På mobil står felt og knap under hinanden; lidt mindre luft og tekst, så en lang adresse også kan ses dér */
-@media (max-width:440px){.signup-row{flex-direction:column}.signup-input{flex:none;padding:0 12px;font-size:15px;letter-spacing:0}.signup-btn{justify-content:center}}
+@media (max-width:440px){.signup-row{flex-direction:column}.signup-input{flex:none;padding:0 14px;font-size:18px;letter-spacing:0}.signup-btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -95,7 +96,7 @@ h1{position:relative;z-index:0}
     </div>
     <p class="signup-msg" id="signup-msg" role="alert"></p>
     <div id="signup-turnstile"></div>
-    <p class="signup-fine">One mail when we open, and nothing else. Unsubscribe with one click.</p>
+    <p class="signup-fine">News from FIRST COAT — the opening, exhibitions and new work. Unsubscribe with one click.</p>
   </form>
   <div class="signup signup-done" id="signup-done" data-testid="site-signup-done" role="status" hidden><p><strong>Almost there.</strong><span id="signup-done-text"></span></p></div>
 </main>
@@ -125,7 +126,7 @@ h1{position:relative;z-index:0}
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
-  var CFG={"endpoint":"https://beacon.broberg.ai/v1/public/subscribe","listKey":"pk_06c8d29c211466c81960bbe40f4cc339","turnstileSiteKey":"0x4AAAAAAFfOE4IabIof892L"}, T={"lead":"Be the first to know when the doors open.","placeholder":"Your email","label":"Email address","submit":"Notify me","sending":"Sending…","fine":"One mail when we open, and nothing else. Unsubscribe with one click.","invalid":"That address is missing something — check it and try again.","error":"We couldn’t save your address just now. Please try again in a moment.","offline":"You seem to be offline. Your address is still here — send it when you’re back online.","bot":"We couldn’t confirm you’re a person. Please try again.","rateLimited":"Too many attempts — please try again in a little while.","doneTitle":"Almost there.","done":"We’ve sent a mail to {email}. Tap the link in it to confirm — then you’re on the list."};
+  var CFG={"endpoint":"https://beacon.broberg.ai/v1/public/subscribe","listKey":"pk_06c8d29c211466c81960bbe40f4cc339","turnstileSiteKey":"0x4AAAAAAFfOE4IabIof892L"}, T={"lead":"Be the first to know when the doors open.","placeholder":"Your email","label":"Email address","submit":"Notify me","sending":"Sending…","fine":"News from FIRST COAT — the opening, exhibitions and new work. Unsubscribe with one click.","invalid":"That address is missing something — check it and try again.","error":"We couldn’t save your address just now. Please try again in a moment.","offline":"You seem to be offline. Your address is still here — send it when you’re back online.","bot":"We couldn’t confirm you’re a person. Please try again.","rateLimited":"Too many attempts — please try again in a little while.","doneTitle":"Almost there.","done":"We’ve sent a mail to {email}. Tap the link in it to confirm — then you’re on the list."};
   var form=document.getElementById('signup'), input=document.getElementById('signup-email'), btn=document.getElementById('signup-submit');
   var msg=document.getElementById('signup-msg'), done=document.getElementById('signup-done'), doneText=document.getElementById('signup-done-text');
   var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, widget=null, pendingToken=null;
