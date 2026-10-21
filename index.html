@@ -46,6 +46,33 @@ h1{position:relative;z-index:0}
 .soon{animation:soon-glow 6s infinite}
 @keyframes soon-glow{0%,40%,56%,86%,100%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}44%,47%,52%{opacity:.3;text-shadow:none}45%,50%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}88%,91%{opacity:.25;text-shadow:none}}
 @media (prefers-reduced-motion:reduce){.neon .tilt,.neon .blink,.soon{animation:none}}
+
+/* Tilmelding (F003.4) */
+.signup{width:min(100%,460px);margin:clamp(4px,1vh,12px) auto 0;text-align:center}
+.signup[hidden]{display:none}
+.signup-lead{margin:0 0 14px;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--white) 78%,transparent)}
+.signup-row{display:flex;gap:8px}
+/* Adressen lyser som neon på mørk bund (ejeren 21/10): lys kerne, rosa glød */
+.signup-input{flex:1;min-width:0;height:48px;padding:0 16px;border-radius:12px;border:1px solid color-mix(in srgb,var(--white) 22%,transparent);background:#000;color:#FFE3F1;caret-color:#FF5AA5;font:inherit;font-size:16px;font-weight:500;letter-spacing:.02em;text-shadow:0 0 4px #FF5AA5,0 0 10px #FF2D95,0 0 20px #E3103F;transition:border-color .15s,box-shadow .15s}
+/* Browserens autoudfyldning maler ellers feltet lyseblåt og teksten sort */
+.signup-input:-webkit-autofill,.signup-input:-webkit-autofill:hover,.signup-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #000 inset;-webkit-text-fill-color:#FFE3F1;caret-color:#FF5AA5;transition:background-color 9999s}
+.signup-input::placeholder{color:color-mix(in srgb,var(--white) 45%,transparent);text-shadow:none}
+.signup-input:focus{outline:none;border-color:var(--classic);box-shadow:0 0 0 3px color-mix(in srgb,var(--classic) 30%,transparent)}
+.signup-input[aria-invalid="true"]{border-color:var(--classic)}
+.signup-btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid var(--classic);background:color-mix(in srgb,var(--classic) 16%,transparent);color:var(--white);font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-shadow:0 0 10px color-mix(in srgb,var(--classic) 60%,transparent);transition:background .15s,transform .1s,box-shadow .15s}
+.signup-btn:hover{background:color-mix(in srgb,var(--classic) 30%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--classic) 45%,transparent)}
+.signup-btn:active{transform:scale(.97)}
+.signup-btn:focus-visible{outline:2px solid var(--classic);outline-offset:2px}
+.signup-btn[aria-busy="true"]{opacity:.7;cursor:progress}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid color-mix(in srgb,var(--white) 30%,transparent);border-top-color:var(--white);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.signup-msg{margin:10px 0 0;font-size:14px;line-height:1.5;min-height:21px}
+.signup-msg.err{color:var(--classic)}
+.signup-fine{margin:12px 0 0;font-size:12px;line-height:1.5;color:color-mix(in srgb,var(--white) 50%,transparent)}
+.signup-done{padding:18px 20px;border-radius:14px;border:1px solid color-mix(in srgb,var(--classic) 55%,transparent);background:color-mix(in srgb,#000 50%,transparent)}
+.signup-done p{margin:0;font-size:15px;line-height:1.55}
+.signup-done strong{display:block;margin-bottom:4px;font-size:17px;color:var(--white)}
+@media (max-width:440px){.signup-row{flex-direction:column}.signup-input{flex:none}.signup-btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -58,6 +85,17 @@ h1{position:relative;z-index:0}
 <main data-testid="site-root">
   <h1 data-testid="site-mark"><div class="wall"><svg class="neon" data-tilt="A" viewBox="110 -34 3519 862" role="img" aria-label="FIRST COAT"><g fill="#E3103F" opacity="0.4" filter="url(#nf-wordmark-v5-wide)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FF2D95" opacity="0.55" filter="url(#nf-wordmark-v5-near)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FF5AA5"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FFE3F1" filter="url(#nf-wordmark-v5-core)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g></svg><svg class="clips" viewBox="110 -34 3519 862" aria-hidden="true"><use href="#clips"/></svg><div class="by" data-testid="site-byline"><svg class="neon"  viewBox="105 -105 2667 372" role="img" aria-label="Contemporary Art &amp; Objects"><g fill="#F6F2EC" opacity="0.9" filter="url(#nf-byline-v5-wide)"><use href="#n-byline-v5-r"/></g><g fill="#F6F2EC" filter="url(#nf-byline-v5-near)"><use href="#n-byline-v5-r"/></g><g fill="#F6F2EC"><use href="#n-byline-v5-r"/></g></svg></div></div></h1>
   <p class="soon">Coming early 2027</p>
+  <form class="signup" id="signup" data-testid="site-signup" novalidate>
+    <p class="signup-lead">Be the first to know when the doors open.</p>
+    <div class="signup-row">
+      <input class="signup-input" id="signup-email" data-testid="site-signup-email" type="email" inputmode="email" autocomplete="email" placeholder="Your email" aria-label="Email address" aria-describedby="signup-msg" required>
+      <button class="signup-btn" id="signup-submit" data-testid="site-signup-submit" type="submit">Notify me</button>
+    </div>
+    <p class="signup-msg" id="signup-msg" role="alert"></p>
+    <div id="signup-turnstile"></div>
+    <p class="signup-fine">One mail when we open, and nothing else. Unsubscribe with one click.</p>
+  </form>
+  <div class="signup signup-done" id="signup-done" data-testid="site-signup-done" role="status" hidden><p><strong>Almost there.</strong><span id="signup-done-text"></span></p></div>
 </main>
 <script>
 // Lyden er slukket til den besøgende selv tænder den. Mens den spiller, blinker A og R præcis
@@ -79,6 +117,55 @@ h1{position:relative;z-index:0}
     btn.setAttribute('aria-busy','true');
     audio.play().then(function(){btn.removeAttribute('aria-busy');playing=true;document.body.classList.add('sound-on');paint(true);cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)})
       .catch(function(){btn.removeAttribute('aria-busy');paint(false)});
+  });
+})();
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function(){
+  var CFG={"endpoint":"https://beacon.broberg.ai/v1/public/subscribe","listKey":"pk_06c8d29c211466c81960bbe40f4cc339","turnstileSiteKey":"0x4AAAAAAFfOE4IabIof892L"}, T={"lead":"Be the first to know when the doors open.","placeholder":"Your email","label":"Email address","submit":"Notify me","sending":"Sending…","fine":"One mail when we open, and nothing else. Unsubscribe with one click.","invalid":"That address is missing something — check it and try again.","error":"We couldn’t save your address just now. Please try again in a moment.","offline":"You seem to be offline. Your address is still here — send it when you’re back online.","bot":"We couldn’t confirm you’re a person. Please try again.","rateLimited":"Too many attempts — please try again in a little while.","doneTitle":"Almost there.","done":"We’ve sent a mail to {email}. Tap the link in it to confirm — then you’re on the list."};
+  var form=document.getElementById('signup'), input=document.getElementById('signup-email'), btn=document.getElementById('signup-submit');
+  var msg=document.getElementById('signup-msg'), done=document.getElementById('signup-done'), doneText=document.getElementById('signup-done-text');
+  var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/, widget=null, pendingToken=null;
+  function say(text){msg.textContent=text||'';msg.className='signup-msg'+(text?' err':'');msg.setAttribute('data-testid',text?'site-signup-error':'site-signup-msg')}
+  function busy(on){btn.setAttribute('aria-busy',String(on));btn.disabled=on;input.readOnly=on;btn.innerHTML=on?'<span class="spin" aria-hidden="true"></span>'+T.sending:T.submit}
+  function finish(email){form.hidden=true;doneText.textContent=T.done.replace('{email}',email);done.hidden=false}
+  // Bot-tjekket: Turnstile i «execute»-tilstand, så det kun ses hvis Cloudflare beder om et klik
+  function token(){
+    if(CFG.mock)return Promise.resolve('mock');
+    return new Promise(function(resolve,reject){
+      if(!window.turnstile)return reject(new Error('turnstile'));
+      pendingToken={resolve:resolve,reject:reject};
+      if(widget===null)widget=turnstile.render('#signup-turnstile',{sitekey:CFG.turnstileSiteKey,execution:'execute',appearance:'interaction-only',
+        callback:function(t){pendingToken&&pendingToken.resolve(t);pendingToken=null},'error-callback':function(){pendingToken&&pendingToken.reject(new Error('turnstile'));pendingToken=null}});
+      else turnstile.reset(widget);
+      turnstile.execute(widget);
+    });
+  }
+  function send(email,t){
+    if(CFG.mock)return new Promise(function(resolve){setTimeout(function(){
+      resolve(/^fail/.test(email)?{status:500,code:'server_error'}:{status:202});
+    },/^slow/.test(email)?600000:900)});
+    return fetch(CFG.endpoint,{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({list_key:CFG.listKey,email:email,turnstile_token:t,source_url:location.href,locale:navigator.language})})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(b){return {status:r.status,code:b&&b.code}})});
+  }
+  input.addEventListener('input',function(){if(input.getAttribute('aria-invalid')==='true'){input.removeAttribute('aria-invalid');say('')}});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(btn.disabled)return;
+    var email=input.value.trim();
+    if(!EMAIL.test(email)){input.setAttribute('aria-invalid','true');say(T.invalid);input.focus();return}
+    if(!navigator.onLine){say(T.offline);return}
+    say('');busy(true);
+    token().then(function(t){return send(email,t)}).then(function(res){
+      busy(false);
+      if(res.status===202)return finish(email);
+      if(res.code==='invalid_email'){input.setAttribute('aria-invalid','true');return say(T.invalid)}
+      if(res.code==='bot_check_failed')return say(T.bot);
+      if(res.status===429)return say(T.rateLimited);
+      say(T.error);
+    }).catch(function(err){busy(false);say(!navigator.onLine?T.offline:err&&err.message==='turnstile'?T.bot:T.error)});
   });
 })();
 </script>
