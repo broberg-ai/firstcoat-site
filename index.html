@@ -133,14 +133,21 @@ h1{position:relative;z-index:0}
   function say(text){msg.textContent=text||'';msg.className='signup-msg'+(text?' err':'');msg.setAttribute('data-testid',text?'site-signup-error':'site-signup-msg')}
   function busy(on){btn.setAttribute('aria-busy',String(on));btn.disabled=on;input.readOnly=on;btn.innerHTML=on?'<span class="spin" aria-hidden="true"></span>'+T.sending:T.submit}
   function finish(email){form.hidden=true;doneText.textContent=T.done.replace('{email}',email);done.hidden=false}
-  // Bot-tjekket: Turnstile i «execute»-tilstand, så det kun ses hvis Cloudflare beder om et klik
+  // Bot-tjekket: Turnstile i «execute»-tilstand, så det kun ses hvis Cloudflare beder om et klik.
+  // Kan tjekket ikke løses (scriptet mangler, fejler eller svarer ikke), sendes tilmeldingen alligevel med
+  // UNSOLVED, og Beacon afgør den: en rigtig besøgende får bot-fejlen derfra, mens Lens' målinger kommer igennem
+  // med en header kun Lens kender (F003.8, Beacon F010.5). Beder Cloudflare om et klik, venter vi på brugeren.
+  var UNSOLVED='unsolved', SILENT_MS=10000, silent=null;
   function token(){
     if(CFG.mock)return Promise.resolve('mock');
-    return new Promise(function(resolve,reject){
-      if(!window.turnstile)return reject(new Error('turnstile'));
-      pendingToken={resolve:resolve,reject:reject};
+    return new Promise(function(resolve){
+      if(!window.turnstile)return resolve(UNSOLVED);
+      function settle(t){clearTimeout(silent);if(pendingToken){pendingToken=null;resolve(t)}}
+      silent=setTimeout(function(){settle(UNSOLVED)},SILENT_MS);
+      pendingToken={resolve:settle};
       if(widget===null)widget=turnstile.render('#signup-turnstile',{sitekey:CFG.turnstileSiteKey,execution:'execute',appearance:'interaction-only',
-        callback:function(t){pendingToken&&pendingToken.resolve(t);pendingToken=null},'error-callback':function(){pendingToken&&pendingToken.reject(new Error('turnstile'));pendingToken=null}});
+        callback:function(t){pendingToken&&pendingToken.resolve(t)},'error-callback':function(){pendingToken&&pendingToken.resolve(UNSOLVED)},
+        'before-interactive-callback':function(){clearTimeout(silent)}});
       else turnstile.reset(widget);
       turnstile.execute(widget);
     });
@@ -168,7 +175,7 @@ h1{position:relative;z-index:0}
       if(res.code==='bot_check_failed')return say(T.bot);
       if(res.status===429)return say(T.rateLimited);
       say(T.error);
-    }).catch(function(err){busy(false);say(!navigator.onLine?T.offline:err&&err.message==='turnstile'?T.bot:T.error)});
+    }).catch(function(){busy(false);say(!navigator.onLine?T.offline:T.error)});
   });
 })();
 </script>
