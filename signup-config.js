@@ -1,0 +1,1 @@
+window.FC_SIGNUP={"endpoint":"https://beacon.broberg.ai/v1/public/subscribe","listKey":"pk_06c8d29c211466c81960bbe40f4cc339","turnstileSiteKey":"0x4AAAAAAFfOE4IabIof892L"}; // gitleaks:allow — offentlig liste-nøgle

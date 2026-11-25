@@ -5,11 +5,11 @@
 <meta name="robots" content="noindex">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FIRST COAT — coming early 2027</title>
+<title>FIRST COAT — launching early 2027</title>
 <meta name="description" content="Contemporary Art &amp; Objects">
 <meta name="theme-color" content="#F6F2EC">
 <link rel="canonical" href="https://firstcoat.gallery/">
-<meta property="og:title" content="FIRST COAT — coming early 2027">
+<meta property="og:title" content="FIRST COAT — launching early 2027">
 <meta property="og:description" content="Contemporary Art &amp; Objects">
 <meta property="og:url" content="https://firstcoat.gallery/">
 <meta property="og:type" content="website">
@@ -31,7 +31,10 @@ h1{position:relative;z-index:0}
 /* Bylinen er sin egen grafik og centreres selvstændigt under logoet (ejeren 21/10) */
 .by{width:72%;margin:4px auto 0}
 .by svg{width:100%;height:auto;display:block}
-.soon{margin:0;font-weight:600;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;font-size:clamp(14px,2.2vw,26px);color:var(--classic);text-shadow:0 0 14px color-mix(in srgb,var(--classic) 70%,transparent)}
+/* Afsenderlinjen nederst (ejeren 25/11, F003.9); følger tekstfarven, så den også kan læses på /white */
+.tagline{margin:0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:color-mix(in srgb,currentColor 55%,transparent)}
+@media (max-width:440px){.tagline{font-size:11px;letter-spacing:.12em}}
+.soon{margin:0;font-weight:600;letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;font-size:clamp(14px,2.2vw,26px);color:var(--white)}
 .sound{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:12px;border:1px solid color-mix(in srgb,var(--white) 18%,transparent);background:color-mix(in srgb,var(--white) 5%,transparent);color:var(--white);display:grid;place-items:center;cursor:pointer;transition:background .15s,transform .1s,border-color .15s}
 .sound:hover{background:color-mix(in srgb,var(--pink) 18%,transparent)}
 .sound:active{transform:scale(.94)}
@@ -44,16 +47,14 @@ h1{position:relative;z-index:0}
 @keyframes flicker{0%,62%,64%,66%,100%{opacity:1}63%{opacity:.25}65%{opacity:.55}80%{opacity:.9}81%{opacity:.2}82%{opacity:1}}
 @keyframes flicker-2{0%,30%,33%,100%{opacity:1}31%{opacity:.15}32%{opacity:.7}70%{opacity:1}71%{opacity:.3}73%{opacity:1}}
 .sound-on .neon .tilt,.sound-on .neon .blink{animation:none}
-/* «Coming soon» tænder og slukker som et neonskilt (ejeren 12/10, F002.21) */
-.soon{animation:soon-glow 6s infinite}
-@keyframes soon-glow{0%,40%,56%,86%,100%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}44%,47%,52%{opacity:.3;text-shadow:none}45%,50%{opacity:1;text-shadow:0 0 6px currentColor,0 0 18px currentColor,0 0 38px currentColor}88%,91%{opacity:.25;text-shadow:none}}
-@media (prefers-reduced-motion:reduce){.neon .tilt,.neon .blink,.soon{animation:none}}
+@media (prefers-reduced-motion:reduce){.neon .tilt,.neon .blink{animation:none}}
 
 /* Tilmelding (F003.4) */
 /* Bredt nok til lange adresser som webhouse.developer+beacon1@gmail.com (ejeren 21/10) */
 .signup{width:min(100%,640px);margin:clamp(4px,1vh,12px) auto 0;text-align:center}
 .signup[hidden]{display:none}
 .signup-lead{margin:0 0 14px;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--white) 78%,transparent)}
+.signup-lead strong{color:var(--white);font-weight:600}
 .signup-row{display:flex;gap:8px}
 /* Adressen lyser som neon på mørk bund (ejeren 21/10): lys kerne, rosa glød */
 /* Adressen fylder feltet (ejeren 21/10: «en del større så den fylder feltet ud») */
@@ -63,12 +64,13 @@ h1{position:relative;z-index:0}
 .signup-input::placeholder{color:color-mix(in srgb,var(--white) 45%,transparent);text-shadow:none}
 .signup-input:focus{outline:none;border-color:var(--classic);box-shadow:0 0 0 3px color-mix(in srgb,var(--classic) 30%,transparent)}
 .signup-input[aria-invalid="true"]{border-color:var(--classic)}
-.signup-btn{height:56px;padding:0 20px;border-radius:12px;border:1px solid var(--classic);background:color-mix(in srgb,var(--classic) 16%,transparent);color:var(--white);font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;text-shadow:0 0 10px color-mix(in srgb,var(--classic) 60%,transparent);transition:background .15s,transform .1s,box-shadow .15s}
-.signup-btn:hover{background:color-mix(in srgb,var(--classic) 30%,transparent);box-shadow:0 0 18px color-mix(in srgb,var(--classic) 45%,transparent)}
+/* Knappen er neonlogoets pink glød (ejeren 25/11, F003.9); mørk tekst, fordi hvid på den pink kun giver 3,4:1 */
+.signup-btn{height:56px;padding:0 20px;border-radius:12px;border:1px solid var(--pink);background:var(--pink);color:var(--night);font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:background .15s,transform .1s,box-shadow .15s}
+.signup-btn:hover{background:color-mix(in srgb,var(--pink) 88%,var(--white));box-shadow:0 0 22px color-mix(in srgb,var(--pink) 60%,transparent)}
 .signup-btn:active{transform:scale(.97)}
-.signup-btn:focus-visible{outline:2px solid var(--classic);outline-offset:2px}
+.signup-btn:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
 .signup-btn[aria-busy="true"]{opacity:.7;cursor:progress}
-.spin{width:14px;height:14px;border-radius:50%;border:2px solid color-mix(in srgb,var(--white) 30%,transparent);border-top-color:var(--white);animation:spin .8s linear infinite}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid color-mix(in srgb,currentColor 30%,transparent);border-top-color:currentColor;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .signup-msg{margin:10px 0 0;font-size:14px;line-height:1.5;min-height:21px}
 .signup-msg.err{color:var(--classic)}
@@ -91,8 +93,8 @@ html,body{background:#F6F2EC;color:var(--night)}
 /* Gløden må tegnes ud over logoets boks — ellers skæres den af i en lige kant på hvidt (F003.7) */
 .wall svg.neon{overflow:visible}
 .wall svg.neon{filter:drop-shadow(0 0 1.5px #E3103F) drop-shadow(0 0 10px color-mix(in srgb,#FF2D95 70%,transparent))}
-/* Den klassiske neon-røde er for lys på hvidt (3,2:1); blandet med nattefarven giver den 5:1 */
-.soon{color:color-mix(in srgb,var(--classic) 75%,var(--night))}
+/* Lanceringsteksten er hvid på forsiden; på hvid bund står den i nattefarven */
+.soon{color:var(--night)}
 .sound{color:var(--night);border-color:color-mix(in srgb,var(--night) 22%,transparent);background:color-mix(in srgb,var(--night) 4%,transparent)}
 </style>
 </head>
@@ -105,7 +107,8 @@ html,body{background:#F6F2EC;color:var(--night)}
 <audio id="neonAudio" data-testid="site-sound-audio" loop preload="none" src="neon.mp3"></audio>
 <main data-testid="site-root">
   <h1 data-testid="site-mark"><div class="wall"><svg class="neon" data-tilt="A" viewBox="110 -34 3519 862" role="img" aria-label="FIRST COAT"><g fill="#E3103F" opacity="0.4" filter="url(#nf-wordmark-v5-wide)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FF2D95" opacity="0.55" filter="url(#nf-wordmark-v5-near)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FF5AA5"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g><g fill="#FFE3F1" filter="url(#nf-wordmark-v5-core)"><use href="#n-wordmark-v5-r"/><g class="blink"><use href="#n-wordmark-v5-b"/></g><g class="tilt"><use href="#n-wordmark-v5-t"/></g></g></svg><svg class="clips" viewBox="110 -34 3519 862" aria-hidden="true"><use href="#clips"/></svg><div class="by" data-testid="site-byline"><svg class="" viewBox="105 -105 2667 372" fill="currentColor" role="img" aria-label="Contemporary Art &amp; Objects"><use href="#n-byline-v5-r"/></svg></div></div></h1>
-  <p class="soon">Coming early 2027</p>
+  <p class="soon">Launching early 2027</p>
+  <p class="tagline" data-testid="site-tagline">FIRST COAT — A gallery without fixed walls</p>
 </main>
 <script>
 // Lyden er slukket til den besøgende selv tænder den. Mens den spiller, blinker A og R præcis
